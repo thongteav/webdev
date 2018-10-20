@@ -1,0 +1,75 @@
+<!-- Teav Thong 14883251 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Page</title> 
+	<script type="text/javascript" src="adminPHPs.js"></script>
+	<style>
+		h1 {
+			background: #000000; 
+			color: #ffffff;
+			width: 100%; 
+			margin: 0px auto;
+			text-align: center;
+		}
+		form {
+			width: 80%; 
+		    margin: 0px auto; 
+		    padding: 20px; 
+		    background: rgba(100, 100, 100, .50); 
+		    -moz-box-shadow: 0 0 20px black; 
+		    -webkit-box-shadow: 0 0 20px black; 
+		    box-shadow: 0 0 20px black;
+		    text-align: center;
+		}
+		input {
+			padding: 5px;
+			margin-bottom: 10px;
+		}
+		#search, #submit {
+		    padding: 16px 32px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    margin: 4px 2px;
+		    -webkit-transition-duration: 0.4s; 
+		    transition-duration: 0.4s;
+		    cursor: pointer;
+		    background-color: white;
+		    color: black;
+		    border: 2px solid #555555;
+		    border-radius: 8px;
+		}
+		#search:hover, #submit:hover {
+			background-color: #555555;
+    		color: white;
+		}
+	</style>
+	<style>
+		#booking table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		}
+		#booking td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		#booking tr:nth-child(even) {
+		    background-color: #f2f2f2;
+		}
+
+		#booking tr:hover {background-color: #ddd;}
+	</style>
+</head>
+<body>
+	<h1>Admin Page</h1>
+	<form>
+	    <label>Search  <input id="search" type="button" name="search" id="search" value="Show pick-up requests" onClick = "showRequest()"> </label>
+ 	    <label><br>Reference number: <input type="text" name="refNum"> </label>
+	    <input id="submit" name="submit" type = "button" onClick = "assignTaxi('assigntaxi.php','output', refNum.value) " value = "Assign Taxi">	
+		<div id="output"></div> 
+	</form>
+</body>
+</html>

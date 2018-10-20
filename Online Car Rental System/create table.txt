@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS booking (
+	ref_num INT(10) NOT NULL AUTO_INCREMENT, 
+	name varchar(50) NOT NULL, 
+	contact varchar(15) NOT NULL, 
+	pickup_unit varchar(5),
+	pickup_st_num varchar(5) NOT NULL,
+	pickup_st_name varchar(40) NOT NULL,
+	pickup_suburb varchar(20) NOT NULL,
+	pickup_date_time DATETIME NOT NULL, 
+	dest_suburb varchar(20) NOT NULL,
+	status VARCHAR(200) DEFAULT ' unassigned', 
+	PRIMARY KEY (ref_num)
+)

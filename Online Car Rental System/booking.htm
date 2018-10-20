@@ -1,0 +1,248 @@
+<!-- Teav Thong 14883251 -->
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Taxi Booking</title>
+	<script type="text/javascript" src="bookingphp.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat Subrayada' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+	<style>
+		html { 
+			background: url(car.jpg) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		form {
+		    width: 480px; 
+		    margin: 50px auto; 
+		    padding: 20px; 
+		    background: rgba(0, 0, 0, .55); 
+		    -moz-box-shadow: 0 0 20px black; 
+		    -webkit-box-shadow: 0 0 20px black; 
+		    box-shadow: 0 0 20px black;
+		    font-family: 'Open Sans', sans-serif;
+		    color: white;
+	    }
+		th, td {			
+			padding: 5px;
+			color: white;
+		}
+		h1 {
+			font-family: 'Montserrat Subrayada';
+			font-size: 40px;
+			color: white; 
+			padding-top: 10px;
+		}
+		h3 {
+			background: rgba(255, 255, 255, .75);
+			color: black;
+		}
+		#output {
+			color: #55acee;
+		}
+		#submit {
+			cursor: pointer;
+			margin: 10px;
+			border-radius: 5px;
+			text-decoration: none;
+			padding: 10px;
+			transition: .3s;
+			-webkit-transition: .3s;
+			-moz-transition: .3s;
+			-o-transition: .3s;
+			display: inline-block;
+			color: #55acee;
+  			border: 2px #55acee solid;
+  			background-color: #ffffff;
+		}
+		#submit:hover {
+			cursor: url(http://cur.cursors-4u.net/symbols/sym-1/sym46.cur), auto;
+			background-color: #55acee;
+  			color: #fff
+		}
+	</style>	
+	<style>
+      	/* Always set the map height explicitly to define the size of the div element that contains the map. */
+      	#map {
+      		height: 100%;
+      	}
+      	html, body {
+      		height: 100%;
+      		margin: 0;
+      		padding: 0;
+     	}
+  	</style>
+  	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  	<style>
+	  	#locationField, #controls {
+	  		position: relative;
+	  		width: 480px;
+	  	}
+	  	#autocomplete {
+	  		position: absolute;
+	  		top: 0px;
+	  		left: 0px;
+	  		width: 99%;
+	  	}
+	  	.label {
+	  		text-align: right;
+	  		font-weight: bold;
+	  		width: 100px;
+	  		color: #000000;
+	  	}
+	  	#address {
+	  		border: 1px solid;
+	  		background-color: #ffffff;
+	  		width: 480px;
+	  		padding-right: 2px;
+	  	}
+	  	#address td {
+	  		font-size: 10pt;
+	  	}
+	  	.field {
+	  		width: 99%;
+	  	}
+	  	.slimField {
+	  		width: 80px;
+	  	}
+	  	.wideField {
+	  		width: 200px;
+	  	}
+	  	#locationField {
+	  		height: 20px;
+	  		margin-bottom: 2px;
+	  	}
+  	</style>
+</head>
+<body>
+	<h1 align="center">CabsOnline Taxi Booking System</h1>
+	<form action="" onsubmit="return Submit()" id="form" name="Form">
+		<h3>Passenger Details</h3>
+		<table>
+			<tbody>
+				<tr>
+					<td>Full name: </td>
+					<td><input type="text" name="namefield" placeholder="Firstname Lastname" style="width:200%" required/></td>
+				</tr>
+				<tr>
+					<td>Contact number: </td>
+					<td><input type="text" name="contact" style="width:200%" required/></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>Pickup Details</h3>
+		<div id="locationField">		
+			<input id="autocomplete" name="autocomplete" placeholder="Enter your address" type="text" style="width:100%" required/></input>
+		</div>
+
+		<table id="address">
+			<tr>
+				<td class="label">Unit number</td>
+				<td class="slimField"><input class="field" name="unit_num" id="unit_num"></input></td>
+			</tr>
+			<tr>
+				<td class="label">Street address</td>
+				<td class="slimField"><input class="field" name="street_number" id="street_number" disabled="true"></input></td>
+				<td class="wideField" colspan="2"><input class="field" name="street_address" id="route" disabled="true"></input></td>
+			</tr>
+			<tr>
+				<td class="label">City</td>
+	         	<td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"></input></td>
+	        </tr>
+	        <tr>
+	         	<td class="label">Suburb</td>
+	         	<td class="slimField"><input class="field" name="suburb" id="sublocality_level_1" disabled="true"></input></td>
+	         	<td class="label">Zip code</td>
+	         	<td class="wideField"><input class="field" id="postal_code" disabled="true"></input></td>
+	        </tr>
+	        <tr>
+	        	<td class="label">Country</td>
+	        	<td class="wideField" colspan="3"><input class="field" id="country" disabled="true"></input></td>
+	        </tr>
+	    </table><br>
+	    <label>Pickup date: </label>
+	    <input type="date" name="pickup_date" id="pickup_date" required/>
+	    <input type="time" name="pickup_time" id="pickup_time" required/>
+	    <h3>Dropoff Details</h3>
+	    <label>Destination suburb: </label>
+	    <input type="text" name="dest_suburb" id="dest_suburb" required/>
+	    <input id="submit" name="submit" type = "button" onClick = "createBooking('makebooking.php','output', namefield.value, contact.value, unit_num.value, street_number.value, street_address.value, suburb.value, dest_suburb.value, pickup_date.value, pickup_time.value) " value = "Submit"><br>
+	   
+	    <script>
+	    	//add the missing zero for a single digit number
+		    function addZero(i) {
+			    if (i < 10) {
+			        i = "0" + i;
+			    }
+			    return i;
+			}
+
+	    	var date = document.getElementById("pickup_date");
+	    	var time = document.getElementById("pickup_time");
+	    	var d = new Date();//get the current date and time
+			var day = addZero(d.getDate());
+			var month = addZero(d.getMonth() + 1); //add 1 because getMonth() returns 0-11
+			var year = d.getFullYear();
+	    	var currentDate = year+"-"+month+"-"+day; //construct the date in Y-m-d format
+	    	var hour = addZero(d.getHours());
+	    	var minute = addZero(d.getMinutes());
+	    	var second = addZero(d.getSeconds());
+	    	date.setAttribute('value', currentDate); //display the current date in the date input
+	    	date.setAttribute('min', currentDate); //set the minumum date/time because pick-up date/time must not be earlier than current date/time
+	    	time.setAttribute('value', hour + ":" + minute + ":" + second); //display the current time in the time input box
+	    </script>
+
+	    <script>
+	      	/* This displays an address form, using the autocomplete feature of the Google Places API to help users fill in the information.
+	      	This example requires the Places library. Include the libraries=places parameter when you first load the API. 
+	      	For example: <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">*/
+
+		    var placeSearch, autocomplete, autocomplete2;
+		    var componentForm = {
+		     	street_number: 'short_name',
+		      	route: 'long_name',
+		      	locality: 'long_name',
+		      	sublocality_level_1: 'short_name',
+		      	country: 'long_name',
+		      	postal_code: 'short_name'
+		    };
+
+	      	function initAutocomplete() {
+		        // Create the autocomplete object, restricting the search to geographical location types.
+		        autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), 
+		        	{types: ['geocode'], componentRestrictions: {country:"nz"}});//restict the result to places in nz only
+
+		        // When the user selects an address from the dropdown, populate the address fields in the form.
+		        autocomplete.addListener('place_changed', fillInAddress);
+
+		        autocomplete2 = new google.maps.places.Autocomplete((document.getElementById('dest_suburb')),
+		        	{types: ['(regions)'], componentRestrictions: {country:"nz"}});
+	    	}
+
+		    function fillInAddress() {
+		        // Get the place details from the autocomplete object.
+		        var place = autocomplete.getPlace();
+
+		        for (var component in componentForm) {
+		        	document.getElementById(component).value = '';
+		        }
+
+		        // Get each component of the address from the place details and fill the corresponding field on the form.
+		        for (var i = 0; i < place.address_components.length; i++) {
+		        	var addressType = place.address_components[i].types[0];
+		        	if (componentForm[addressType]) {
+		        		var val = place.address_components[i][componentForm[addressType]];
+		        		document.getElementById(addressType).value = val;
+		        	}
+		        }
+		    }
+	  	</script>
+	  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHuQ2FWcnhclmsqVics1TVcv5bOo8rAyw&libraries=places&callback=initAutocomplete" async defer></script>
+	  	<div id="output"></div>
+  	</form>  	
+</body>
+</html>
